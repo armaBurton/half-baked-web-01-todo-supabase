@@ -31,17 +31,14 @@ async function displayTodos() {
     // display the list of todos
     for (let t of todos){
         const todoBlock = renderTodo(t);
+        // be sure to give each todo an event listener
+        // on click, complete that todo
         todoBlock.addEventListener(`click`, async() => {
             await completeTodo(t.id);
             displayTodos();
         });
         todosEl.append(todoBlock);
     }
-    
-    // be sure to give each todo an event listener
-        // on click, complete that todo
-
-
 }
 
 // add an on load listener that fetches and displays todos on load
@@ -52,7 +49,6 @@ window.addEventListener(`load`, async() => {
 logoutButton.addEventListener('click', () => {
     logout();
 });
-
 
 deleteButton.addEventListener('click', async() => {
     // delete all todos
